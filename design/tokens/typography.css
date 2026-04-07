@@ -1,0 +1,118 @@
+/*
+ * Design Tokens - Typography System
+ * HR 工時管理系統 (shadcn/ui + Tailwind CSS)
+ *
+ * 字型系統基於 4px grid，使用 rem 單位。
+ * 搭配 Tailwind CSS 的 text-* utility 使用。
+ */
+
+@layer base {
+  :root {
+    /* ========================================
+     * Font Family
+     * ======================================== */
+    --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+      "Noto Sans TC", sans-serif;
+    --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, "SF Mono",
+      Menlo, Consolas, "Liberation Mono", monospace;
+
+    /* ========================================
+     * Font Size + Line Height
+     * 格式：font-size / line-height
+     * ======================================== */
+
+    /* --- Display（大標題 — 用於 Dashboard 數據卡片） --- */
+    --text-display: 2.25rem;     /* 36px */
+    --leading-display: 2.5rem;   /* 40px */
+
+    /* --- Heading 1（頁面標題） --- */
+    --text-h1: 1.875rem;         /* 30px */
+    --leading-h1: 2.25rem;       /* 36px */
+
+    /* --- Heading 2（區塊標題） --- */
+    --text-h2: 1.5rem;           /* 24px */
+    --leading-h2: 2rem;          /* 32px */
+
+    /* --- Heading 3（卡片/Modal 標題） --- */
+    --text-h3: 1.25rem;          /* 20px */
+    --leading-h3: 1.75rem;       /* 28px */
+
+    /* --- Heading 4（小區塊標題） --- */
+    --text-h4: 1.125rem;         /* 18px */
+    --leading-h4: 1.75rem;       /* 28px */
+
+    /* --- Body Large --- */
+    --text-lg: 1.125rem;         /* 18px */
+    --leading-lg: 1.75rem;       /* 28px */
+
+    /* --- Body（預設內文） --- */
+    --text-base: 1rem;           /* 16px */
+    --leading-base: 1.5rem;      /* 24px */
+
+    /* --- Body Small（表格、輔助文字） --- */
+    --text-sm: 0.875rem;         /* 14px */
+    --leading-sm: 1.25rem;       /* 20px */
+
+    /* --- Caption（標籤、Badge） --- */
+    --text-xs: 0.75rem;          /* 12px */
+    --leading-xs: 1rem;          /* 16px */
+
+    /* ========================================
+     * Font Weight
+     * ======================================== */
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
+
+    /* ========================================
+     * Letter Spacing
+     * ======================================== */
+    --tracking-tight: -0.025em;
+    --tracking-normal: 0em;
+    --tracking-wide: 0.025em;
+  }
+}
+
+/*
+ * Typography 預設樣式
+ * 可在 globals.css 中引入。
+ */
+@layer base {
+  body {
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    line-height: var(--leading-base);
+    font-weight: var(--font-normal);
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+    line-height: var(--leading-h1);
+    font-weight: var(--font-bold);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    line-height: var(--leading-h2);
+    font-weight: var(--font-semibold);
+    letter-spacing: var(--tracking-tight);
+  }
+
+  h3 {
+    font-size: var(--text-h3);
+    line-height: var(--leading-h3);
+    font-weight: var(--font-semibold);
+  }
+
+  h4 {
+    font-size: var(--text-h4);
+    line-height: var(--leading-h4);
+    font-weight: var(--font-semibold);
+  }
+}
