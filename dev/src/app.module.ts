@@ -9,6 +9,7 @@ import { LeaveQuotasModule } from './leave-quotas/leave-quotas.module';
 import { LeavesModule } from './leaves/leaves.module';
 import { LeaveApprovalModule } from './leave-approval/leave-approval.module';
 import { ReportsModule } from './reports/reports.module';
+import { CalendarModule } from './calendar/calendar.module';
 
 @Module({
   imports: [
@@ -25,6 +26,7 @@ import { ReportsModule } from './reports/reports.module';
     LeavesModule,
     LeaveApprovalModule,
     ReportsModule,
+    CalendarModule,
   ],
 })
 export class AppModule {}
