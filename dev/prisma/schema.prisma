@@ -50,6 +50,8 @@ model User {
   leaveQuotas    LeaveQuota[]   @relation("UserQuotas")
   missedClockRequests  MissedClockRequest[] @relation("UserMissedClocks")
   reviewedMissedClocks MissedClockRequest[] @relation("MissedClockReviewer")
+  overtimeRequests   OvertimeRequest[]  @relation("UserOvertimes")
+  reviewedOvertimes  OvertimeRequest[]  @relation("OvertimeReviewer")
 
   @@map("users")
 }
@@ -167,6 +169,7 @@ enum HalfDay {
   AFTERNOON
 }
 
+<<<<<<< HEAD
 model MissedClockRequest {
   id            String             @id @default(uuid())
   userId        String             @map("user_id")
@@ -196,4 +199,33 @@ enum MissedClockStatus {
   PENDING
   APPROVED
   REJECTED
+}
+
+model OvertimeRequest {
+  id            String          @id @default(uuid())
+  userId        String          @map("user_id")
+  date          DateTime        @db.Date
+  startTime     String          @map("start_time") @db.VarChar(5)
+  endTime       String          @map("end_time") @db.VarChar(5)
+  hours         Decimal         @db.Decimal(4, 1)
+  reason        String          @db.Text
+  status        OvertimeStatus  @default(PENDING)
+  reviewerId    String?         @map("reviewer_id")
+  reviewedAt    DateTime?       @map("reviewed_at")
+  reviewComment String?         @map("review_comment") @db.Text
+  createdAt     DateTime        @default(now()) @map("created_at")
+  updatedAt     DateTime        @updatedAt @map("updated_at")
+
+  user     User  @relation("UserOvertimes", fields: [userId], references: [id])
+  reviewer User? @relation("OvertimeReviewer", fields: [reviewerId], references: [id])
+
+  @@unique([userId, date])
+  @@map("overtime_requests")
+}
+
+enum OvertimeStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
 }
