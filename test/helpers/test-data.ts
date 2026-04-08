@@ -118,6 +118,22 @@ export const API = {
     COMPANY: '/api/v1/reports/company',
     EXPORT: '/api/v1/reports/export',
   },
+  OVERTIME: {
+    BASE: '/api/v1/overtime',
+    PENDING: '/api/v1/overtime/pending',
+    // + /:id/cancel, /:id/approve, /:id/reject
+  },
+  MISSED_CLOCKS: {
+    BASE: '/api/v1/missed-clocks',
+    PENDING: '/api/v1/missed-clocks/pending',
+    // + /:id/approve, /:id/reject
+  },
+  NOTIFICATIONS: {
+    BASE: '/api/v1/notifications',
+    UNREAD_COUNT: '/api/v1/notifications/unread-count',
+    READ_ALL: '/api/v1/notifications/read-all',
+    // + /:id/read
+  },
 } as const;
 
 // ===== 密碼測試 =====

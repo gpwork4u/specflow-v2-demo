@@ -1,5 +1,5 @@
 import { APIRequestContext } from '@playwright/test';
-import { API, ADMIN_USER, EMPLOYEE_USER, MANAGER_USER, LEAVE_TYPES, HALF_DAY, futureDate } from './test-data';
+import { API, ADMIN_USER, EMPLOYEE_USER, MANAGER_USER, LEAVE_TYPES, HALF_DAY, futureDate, pastDate, todayDate } from './test-data';
 
 /**
  * API Client Helper
@@ -369,4 +369,266 @@ export async function createLeaveAndGetId(
   const res = await createLeave(request, accessToken, data);
   const body = await res.json();
   return body.id;
+}
+
+// =============================================
+// 加班 API (F-006)
+// =============================================
+
+export interface CreateOvertimeData {
+  date: string;
+  start_time: string;
+  end_time: string;
+  reason: string;
+}
+
+/**
+ * 建立加班申請
+ */
+export async function createOvertime(
+  request: APIRequestContext,
+  accessToken: string,
+  data: CreateOvertimeData,
+) {
+  return request.post(API.OVERTIME.BASE, {
+    data,
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 查詢個人加班紀錄
+ */
+export async function getOvertimes(
+  request: APIRequestContext,
+  accessToken: string,
+  params?: Record<string, string>,
+) {
+  const query = params
+    ? '?' + new URLSearchParams(params).toString()
+    : '';
+  return request.get(`${API.OVERTIME.BASE}${query}`, {
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 取消加班申請
+ */
+export async function cancelOvertime(
+  request: APIRequestContext,
+  accessToken: string,
+  overtimeId: string,
+) {
+  return request.put(`${API.OVERTIME.BASE}/${overtimeId}/cancel`, {
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 查看待審核加班清單
+ */
+export async function getPendingOvertimes(
+  request: APIRequestContext,
+  accessToken: string,
+) {
+  return request.get(API.OVERTIME.PENDING, {
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 核准加班
+ */
+export async function approveOvertime(
+  request: APIRequestContext,
+  accessToken: string,
+  overtimeId: string,
+  comment?: string,
+) {
+  return request.put(`${API.OVERTIME.BASE}/${overtimeId}/approve`, {
+    data: comment ? { comment } : {},
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 駁回加班
+ */
+export async function rejectOvertime(
+  request: APIRequestContext,
+  accessToken: string,
+  overtimeId: string,
+  comment: string,
+) {
+  return request.put(`${API.OVERTIME.BASE}/${overtimeId}/reject`, {
+    data: { comment },
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 建立加班申請並回傳 id
+ */
+export async function createOvertimeAndGetId(
+  request: APIRequestContext,
+  accessToken: string,
+  data: CreateOvertimeData,
+): Promise<string> {
+  const res = await createOvertime(request, accessToken, data);
+  const body = await res.json();
+  return body.id;
+}
+
+// =============================================
+// 補打卡 API (F-010)
+// =============================================
+
+export interface CreateMissedClockData {
+  date: string;
+  clock_type: 'clock_in' | 'clock_out';
+  requested_time: string;
+  reason: string;
+}
+
+/**
+ * 建立補打卡申請
+ */
+export async function createMissedClock(
+  request: APIRequestContext,
+  accessToken: string,
+  data: CreateMissedClockData,
+) {
+  return request.post(API.MISSED_CLOCKS.BASE, {
+    data,
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 查詢個人補打卡紀錄
+ */
+export async function getMissedClocks(
+  request: APIRequestContext,
+  accessToken: string,
+  params?: Record<string, string>,
+) {
+  const query = params
+    ? '?' + new URLSearchParams(params).toString()
+    : '';
+  return request.get(`${API.MISSED_CLOCKS.BASE}${query}`, {
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 查看待審核補打卡清單
+ */
+export async function getPendingMissedClocks(
+  request: APIRequestContext,
+  accessToken: string,
+) {
+  return request.get(API.MISSED_CLOCKS.PENDING, {
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 核准補打卡
+ */
+export async function approveMissedClock(
+  request: APIRequestContext,
+  accessToken: string,
+  missedClockId: string,
+  comment?: string,
+) {
+  return request.put(`${API.MISSED_CLOCKS.BASE}/${missedClockId}/approve`, {
+    data: comment ? { comment } : {},
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 駁回補打卡
+ */
+export async function rejectMissedClock(
+  request: APIRequestContext,
+  accessToken: string,
+  missedClockId: string,
+  comment: string,
+) {
+  return request.put(`${API.MISSED_CLOCKS.BASE}/${missedClockId}/reject`, {
+    data: { comment },
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 建立補打卡申請並回傳 id
+ */
+export async function createMissedClockAndGetId(
+  request: APIRequestContext,
+  accessToken: string,
+  data: CreateMissedClockData,
+): Promise<string> {
+  const res = await createMissedClock(request, accessToken, data);
+  const body = await res.json();
+  return body.id;
+}
+
+// =============================================
+// 通知 API (F-007)
+// =============================================
+
+/**
+ * 取得通知列表
+ */
+export async function getNotifications(
+  request: APIRequestContext,
+  accessToken: string,
+  params?: Record<string, string>,
+) {
+  const query = params
+    ? '?' + new URLSearchParams(params).toString()
+    : '';
+  return request.get(`${API.NOTIFICATIONS.BASE}${query}`, {
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 取得未讀通知數量
+ */
+export async function getUnreadCount(
+  request: APIRequestContext,
+  accessToken: string,
+) {
+  return request.get(API.NOTIFICATIONS.UNREAD_COUNT, {
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 標記單則通知已讀
+ */
+export async function markNotificationRead(
+  request: APIRequestContext,
+  accessToken: string,
+  notificationId: string,
+) {
+  return request.put(`${API.NOTIFICATIONS.BASE}/${notificationId}/read`, {
+    headers: authHeaders(accessToken),
+  });
+}
+
+/**
+ * 全部標記已讀
+ */
+export async function markAllNotificationsRead(
+  request: APIRequestContext,
+  accessToken: string,
+) {
+  return request.put(API.NOTIFICATIONS.READ_ALL, {
+    headers: authHeaders(accessToken),
+  });
 }
