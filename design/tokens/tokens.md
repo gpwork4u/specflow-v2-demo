@@ -14,6 +14,7 @@
 | 檔案 | 內容 |
 |------|------|
 | `colors.css` | 原始色票 + 語意色票 + 狀態色票 |
+| `leave-colors.css` | 假別色彩 + 請假狀態色彩（Sprint 2） |
 | `typography.css` | 字型、字級、字重、行高 |
 | `spacing.css` | 間距、Layout 尺寸、圓角、陰影、z-index、動畫 |
 
@@ -58,6 +59,30 @@
 | Admin | `--role-admin` | Purple |
 | 主管 | `--role-manager` | Blue |
 | 員工 | `--role-employee` | Gray |
+
+### 假別色彩（Sprint 2）
+
+定義於 `leave-colors.css`。每種假別有 3 個 token：主色、背景色、文字色。
+
+| 假別 | Token 前綴 | 顏色 |
+|------|-----------|------|
+| 特休 | `--leave-annual` | Blue |
+| 事假 | `--leave-personal` | Orange |
+| 病假 | `--leave-sick` | Red |
+| 婚假 | `--leave-marriage` | Pink |
+| 喪假 | `--leave-bereavement` | Slate |
+| 產假 | `--leave-maternity` | Purple |
+| 陪產假 | `--leave-paternity` | Indigo |
+| 公假 | `--leave-official` | Teal |
+
+### 請假狀態色（Sprint 2）
+
+| 狀態 | Token 前綴 | 顏色 |
+|------|-----------|------|
+| 待審核 | `--leave-status-pending` | Amber |
+| 已核准 | `--leave-status-approved` | Green |
+| 已駁回 | `--leave-status-rejected` | Red |
+| 已取消 | `--leave-status-cancelled` | Gray |
 
 ## 字型系統
 

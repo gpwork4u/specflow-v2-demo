@@ -1,0 +1,119 @@
+/*
+ * Design Tokens - Leave System Colors
+ * Sprint 2: 請假流程專用色彩
+ *
+ * 假別色彩 + 請假狀態色彩
+ * 與 colors.css 搭配使用。
+ */
+
+:root {
+  /* ========================================
+   * 假別色彩（Leave Type Colors）
+   * 每種假別有獨特的辨識色。
+   * ======================================== */
+
+  /* 特休 — Blue */
+  --leave-annual: 217 91% 60%;
+  --leave-annual-bg: 214 100% 97%;
+  --leave-annual-text: 224 76% 48%;
+
+  /* 事假 — Orange */
+  --leave-personal: 25 95% 53%;
+  --leave-personal-bg: 33 100% 96%;
+  --leave-personal-text: 21 90% 38%;
+
+  /* 病假 — Red */
+  --leave-sick: 0 84% 60%;
+  --leave-sick-bg: 0 86% 97%;
+  --leave-sick-text: 0 74% 42%;
+
+  /* 婚假 — Pink */
+  --leave-marriage: 330 81% 60%;
+  --leave-marriage-bg: 330 100% 97%;
+  --leave-marriage-text: 330 80% 40%;
+
+  /* 喪假 — Slate */
+  --leave-bereavement: 215 14% 45%;
+  --leave-bereavement-bg: 210 20% 96%;
+  --leave-bereavement-text: 215 14% 34%;
+
+  /* 產假 — Purple */
+  --leave-maternity: 262 83% 58%;
+  --leave-maternity-bg: 270 100% 98%;
+  --leave-maternity-text: 262 72% 44%;
+
+  /* 陪產假 — Indigo */
+  --leave-paternity: 239 84% 67%;
+  --leave-paternity-bg: 240 100% 97%;
+  --leave-paternity-text: 239 70% 50%;
+
+  /* 公假 — Teal */
+  --leave-official: 172 66% 50%;
+  --leave-official-bg: 166 76% 97%;
+  --leave-official-text: 172 66% 32%;
+
+  /* ========================================
+   * 請假狀態色（Leave Status Colors）
+   * 用於 StatusBadge type="leave"
+   * ======================================== */
+
+  /* 待審核 — Amber */
+  --leave-status-pending: 38 92% 50%;
+  --leave-status-pending-bg: 48 100% 96%;
+  --leave-status-pending-text: 26 90% 37%;
+
+  /* 已核准 — Green */
+  --leave-status-approved: 142 71% 45%;
+  --leave-status-approved-bg: 138 76% 97%;
+  --leave-status-approved-text: 142 72% 29%;
+
+  /* 已駁回 — Red */
+  --leave-status-rejected: 0 84% 60%;
+  --leave-status-rejected-bg: 0 86% 97%;
+  --leave-status-rejected-text: 0 74% 42%;
+
+  /* 已取消 — Gray */
+  --leave-status-cancelled: 0 0% 45%;
+  --leave-status-cancelled-bg: 0 0% 96%;
+  --leave-status-cancelled-text: 0 0% 32%;
+}
+
+.dark {
+  /* 假別色彩 Dark Mode */
+  --leave-annual-bg: 224 71% 15%;
+  --leave-annual-text: 213 94% 68%;
+
+  --leave-personal-bg: 21 80% 15%;
+  --leave-personal-text: 27 96% 61%;
+
+  --leave-sick-bg: 0 63% 15%;
+  --leave-sick-text: 0 93% 75%;
+
+  --leave-marriage-bg: 330 60% 15%;
+  --leave-marriage-text: 330 81% 70%;
+
+  --leave-bereavement-bg: 215 14% 18%;
+  --leave-bereavement-text: 215 20% 65%;
+
+  --leave-maternity-bg: 262 60% 15%;
+  --leave-maternity-text: 262 83% 75%;
+
+  --leave-paternity-bg: 239 60% 15%;
+  --leave-paternity-text: 239 84% 78%;
+
+  --leave-official-bg: 172 50% 12%;
+  --leave-official-text: 172 66% 65%;
+
+  /* 請假狀態 Dark Mode */
+  --leave-status-pending-bg: 32 80% 15%;
+  --leave-status-pending-text: 48 96% 72%;
+
+  --leave-status-approved-bg: 142 55% 12%;
+  --leave-status-approved-text: 141 84% 70%;
+
+  --leave-status-rejected-bg: 0 63% 15%;
+  --leave-status-rejected-text: 0 93% 75%;
+
+  --leave-status-cancelled-bg: 0 0% 15%;
+  --leave-status-cancelled-text: 0 0% 64%;
+}
