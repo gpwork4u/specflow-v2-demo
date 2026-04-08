@@ -15,6 +15,7 @@
 |------|------|
 | `colors.css` | 原始色票 + 語意色票 + 狀態色票 |
 | `leave-colors.css` | 假別色彩 + 請假狀態色彩（Sprint 2） |
+| `calendar-colors.css` | 行事曆日格狀態色 + 圖表色階（Sprint 3） |
 | `typography.css` | 字型、字級、字重、行高 |
 | `spacing.css` | 間距、Layout 尺寸、圓角、陰影、z-index、動畫 |
 
@@ -83,6 +84,34 @@
 | 已核准 | `--leave-status-approved` | Green |
 | 已駁回 | `--leave-status-rejected` | Red |
 | 已取消 | `--leave-status-cancelled` | Gray |
+
+### 行事曆日格狀態色（Sprint 3）
+
+定義於 `calendar-colors.css`。每個狀態有背景色、文字色、邊框色三個 token。
+
+| 狀態 | Token 前綴 | 顏色 | 說明 |
+|------|-----------|------|------|
+| 正常出勤 | `--cal-present` | Green | 準時上下班 |
+| 遲到 | `--cal-late` | Amber | clock_in > 09:00 |
+| 早退 | `--cal-early-leave` | Orange | clock_out < 18:00 |
+| 請假 | `--cal-leave` | Blue | 預設；可依假別覆蓋 |
+| 缺席 | `--cal-absent` | Red | 無打卡且無請假 |
+| 假日 | `--cal-holiday` | Gray | 週末/國定假日 |
+| 加班 | `--cal-overtime` | Purple | 假日加班 |
+| 今天 | `--cal-today-ring` | Primary Blue | 今日高亮環 |
+
+### 圖表色階（Sprint 3）
+
+定義於 `calendar-colors.css`。用於 Recharts 圖表。
+
+| Token | 顏色 | 用途 |
+|-------|------|------|
+| `--chart-present` | Green | 正常出勤 |
+| `--chart-late` | Amber | 遲到 |
+| `--chart-early-leave` | Orange | 早退 |
+| `--chart-leave` | Blue | 請假 |
+| `--chart-absent` | Red | 缺席 |
+| `--chart-overtime` | Purple | 加班 |
 
 ## 字型系統
 

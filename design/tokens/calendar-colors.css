@@ -1,0 +1,114 @@
+/*
+ * Design Tokens - Calendar & Report Colors
+ * Sprint 3: 行事曆 + 報表可視化專用色彩
+ *
+ * 行事曆日格狀態色 + 圖表色階
+ * 與 colors.css / leave-colors.css 搭配使用。
+ */
+
+:root {
+  /* ========================================
+   * 行事曆日格狀態色（Calendar Day Cell Colors）
+   * 用於個人月曆和團隊行事曆的日格背景/文字。
+   * 每個狀態有 3 個 token：背景色、文字色、邊框色。
+   * ======================================== */
+
+  /* 正常出勤 — Green */
+  --cal-present: 142 71% 45%;
+  --cal-present-bg: 138 76% 97%;
+  --cal-present-text: 142 72% 29%;
+  --cal-present-border: 142 71% 85%;
+
+  /* 遲到 — Amber */
+  --cal-late: 38 92% 50%;
+  --cal-late-bg: 48 100% 96%;
+  --cal-late-text: 26 90% 37%;
+  --cal-late-border: 38 92% 82%;
+
+  /* 早退 — Deep Amber / Orange */
+  --cal-early-leave: 25 95% 53%;
+  --cal-early-leave-bg: 33 100% 96%;
+  --cal-early-leave-text: 21 90% 38%;
+  --cal-early-leave-border: 25 95% 82%;
+
+  /* 請假 — Blue（預設；依假別可用 leave-colors.css 覆蓋） */
+  --cal-leave: 217 91% 60%;
+  --cal-leave-bg: 214 100% 97%;
+  --cal-leave-text: 224 76% 48%;
+  --cal-leave-border: 217 91% 85%;
+
+  /* 缺席 — Red */
+  --cal-absent: 0 84% 60%;
+  --cal-absent-bg: 0 86% 97%;
+  --cal-absent-text: 0 74% 42%;
+  --cal-absent-border: 0 84% 85%;
+
+  /* 假日 — Neutral (Gray) */
+  --cal-holiday: 0 0% 64%;
+  --cal-holiday-bg: 0 0% 96%;
+  --cal-holiday-text: 0 0% 45%;
+  --cal-holiday-border: 0 0% 90%;
+
+  /* 加班 — Purple */
+  --cal-overtime: 262 83% 58%;
+  --cal-overtime-bg: 270 100% 98%;
+  --cal-overtime-text: 262 72% 44%;
+  --cal-overtime-border: 262 83% 85%;
+
+  /* 今天高亮 */
+  --cal-today-ring: 221 83% 53%;
+
+  /* ========================================
+   * 圖表色階（Chart Palette）
+   * 用於圓餅圖、長條圖等統計圖表。
+   * 基於 colors.css 的 --chart-* 擴展。
+   * ======================================== */
+
+  --chart-present: 142 71% 45%;
+  --chart-late: 38 92% 50%;
+  --chart-early-leave: 25 95% 53%;
+  --chart-leave: 217 91% 60%;
+  --chart-absent: 0 84% 60%;
+  --chart-overtime: 262 83% 58%;
+}
+
+.dark {
+  /* 行事曆日格 Dark Mode */
+  --cal-present-bg: 142 55% 12%;
+  --cal-present-text: 141 84% 70%;
+  --cal-present-border: 142 55% 25%;
+
+  --cal-late-bg: 32 80% 15%;
+  --cal-late-text: 48 96% 72%;
+  --cal-late-border: 38 80% 28%;
+
+  --cal-early-leave-bg: 21 80% 15%;
+  --cal-early-leave-text: 27 96% 61%;
+  --cal-early-leave-border: 25 80% 28%;
+
+  --cal-leave-bg: 224 71% 15%;
+  --cal-leave-text: 213 94% 68%;
+  --cal-leave-border: 217 71% 28%;
+
+  --cal-absent-bg: 0 63% 15%;
+  --cal-absent-text: 0 93% 75%;
+  --cal-absent-border: 0 63% 28%;
+
+  --cal-holiday-bg: 0 0% 12%;
+  --cal-holiday-text: 0 0% 55%;
+  --cal-holiday-border: 0 0% 22%;
+
+  --cal-overtime-bg: 262 60% 15%;
+  --cal-overtime-text: 262 83% 75%;
+  --cal-overtime-border: 262 60% 28%;
+
+  --cal-today-ring: 217 91% 60%;
+
+  /* 圖表色 Dark Mode */
+  --chart-present: 141 84% 70%;
+  --chart-late: 48 96% 72%;
+  --chart-early-leave: 27 96% 61%;
+  --chart-leave: 213 94% 68%;
+  --chart-absent: 0 93% 75%;
+  --chart-overtime: 262 83% 75%;
+}
