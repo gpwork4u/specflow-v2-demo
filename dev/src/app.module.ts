@@ -11,6 +11,7 @@ import { LeaveApprovalModule } from './leave-approval/leave-approval.module';
 import { ReportsModule } from './reports/reports.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { MissedClocksModule } from './missed-clocks/missed-clocks.module';
+import { OvertimeModule } from './overtime/overtime.module';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { MissedClocksModule } from './missed-clocks/missed-clocks.module';
     ReportsModule,
     CalendarModule,
     MissedClocksModule,
+    OvertimeModule,
   ],
 })
 export class AppModule {}
