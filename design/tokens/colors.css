@@ -1,0 +1,220 @@
+/*
+ * Design Tokens - Color System
+ * HR 工時管理系統 (shadcn/ui + Tailwind CSS)
+ *
+ * 使用 HSL 格式，與 shadcn/ui 預設一致。
+ * 在 Tailwind CSS 4 中透過 @theme inline 註冊為 utility。
+ * 支援 Light / Dark 兩種主題。
+ */
+
+@layer base {
+  :root {
+    /* ========================================
+     * Primitive Colors（原始色票）
+     * 這些是基礎色值，不直接用於元件。
+     * ======================================== */
+
+    /* --- Blue (Primary) --- */
+    --blue-50: 214 100% 97%;
+    --blue-100: 214 95% 93%;
+    --blue-200: 213 97% 87%;
+    --blue-300: 212 96% 78%;
+    --blue-400: 213 94% 68%;
+    --blue-500: 217 91% 60%;
+    --blue-600: 221 83% 53%;
+    --blue-700: 224 76% 48%;
+    --blue-800: 226 71% 40%;
+    --blue-900: 224 64% 33%;
+
+    /* --- Green (Success) --- */
+    --green-50: 138 76% 97%;
+    --green-100: 141 84% 93%;
+    --green-500: 142 71% 45%;
+    --green-600: 142 76% 36%;
+    --green-700: 142 72% 29%;
+
+    /* --- Amber (Warning) --- */
+    --amber-50: 48 100% 96%;
+    --amber-100: 48 96% 89%;
+    --amber-500: 38 92% 50%;
+    --amber-600: 32 95% 44%;
+    --amber-700: 26 90% 37%;
+
+    /* --- Red (Destructive / Error) --- */
+    --red-50: 0 86% 97%;
+    --red-100: 0 93% 94%;
+    --red-500: 0 84% 60%;
+    --red-600: 0 72% 51%;
+    --red-700: 0 74% 42%;
+
+    /* --- Neutral (Gray) --- */
+    --neutral-50: 0 0% 98%;
+    --neutral-100: 0 0% 96%;
+    --neutral-200: 0 0% 90%;
+    --neutral-300: 0 0% 83%;
+    --neutral-400: 0 0% 64%;
+    --neutral-500: 0 0% 45%;
+    --neutral-600: 0 0% 32%;
+    --neutral-700: 0 0% 25%;
+    --neutral-800: 0 0% 15%;
+    --neutral-900: 0 0% 9%;
+    --neutral-950: 0 0% 4%;
+
+    /* ========================================
+     * Semantic Tokens（語意色票）
+     * 元件直接引用這些 token。
+     * ======================================== */
+
+    /* --- Background --- */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 4%;
+
+    /* --- Card --- */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+
+    /* --- Popover --- */
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+
+    /* --- Primary --- */
+    --primary: 221 83% 53%;
+    --primary-foreground: 0 0% 100%;
+
+    /* --- Secondary --- */
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 9%;
+
+    /* --- Muted --- */
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* --- Accent --- */
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
+
+    /* --- Destructive --- */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* --- Success（自訂，shadcn/ui 預設無此 token） --- */
+    --success: 142 71% 45%;
+    --success-foreground: 0 0% 100%;
+
+    /* --- Warning（自訂） --- */
+    --warning: 38 92% 50%;
+    --warning-foreground: 0 0% 9%;
+
+    /* --- Border / Input / Ring --- */
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 221 83% 53%;
+
+    /* --- Chart（圖表用色） --- */
+    --chart-1: 217 91% 60%;
+    --chart-2: 142 71% 45%;
+    --chart-3: 38 92% 50%;
+    --chart-4: 0 84% 60%;
+    --chart-5: 262 83% 58%;
+
+    /* --- Sidebar --- */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 25%;
+    --sidebar-primary: 221 83% 53%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 221 83% 53%;
+
+    /* --- Radius --- */
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    /* --- Background --- */
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
+
+    /* --- Card --- */
+    --card: 0 0% 4%;
+    --card-foreground: 0 0% 98%;
+
+    /* --- Popover --- */
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
+
+    /* --- Primary --- */
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 4%;
+
+    /* --- Secondary --- */
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 98%;
+
+    /* --- Muted --- */
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 64%;
+
+    /* --- Accent --- */
+    --accent: 0 0% 15%;
+    --accent-foreground: 0 0% 98%;
+
+    /* --- Destructive --- */
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 98%;
+
+    /* --- Success --- */
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 98%;
+
+    /* --- Warning --- */
+    --warning: 32 95% 44%;
+    --warning-foreground: 0 0% 98%;
+
+    /* --- Border / Input / Ring --- */
+    --border: 0 0% 15%;
+    --input: 0 0% 15%;
+    --ring: 217 91% 60%;
+
+    /* --- Chart --- */
+    --chart-1: 213 94% 68%;
+    --chart-2: 141 84% 93%;
+    --chart-3: 48 96% 89%;
+    --chart-4: 0 93% 94%;
+    --chart-5: 262 83% 58%;
+
+    /* --- Sidebar --- */
+    --sidebar-background: 0 0% 7%;
+    --sidebar-foreground: 0 0% 83%;
+    --sidebar-primary: 217 91% 60%;
+    --sidebar-primary-foreground: 0 0% 4%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 15%;
+    --sidebar-ring: 217 91% 60%;
+  }
+}
+
+/*
+ * 狀態專用色（出勤系統）
+ * 這些 token 供 StatusBadge 等元件使用。
+ */
+:root {
+  /* 出勤狀態 */
+  --status-normal: 142 71% 45%;        /* 綠 — 正常 */
+  --status-late: 38 92% 50%;           /* 橙 — 遲到 */
+  --status-early-leave: 32 95% 44%;    /* 深橙 — 早退 */
+  --status-absent: 0 84% 60%;          /* 紅 — 缺席 */
+  --status-amended: 217 91% 60%;       /* 藍 — 已補打卡 */
+
+  /* 帳號狀態 */
+  --status-active: 142 71% 45%;        /* 綠 — 啟用 */
+  --status-inactive: 0 0% 45%;         /* 灰 — 停用 */
+  --status-suspended: 0 84% 60%;       /* 紅 — 凍結 */
+
+  /* 角色標籤 */
+  --role-admin: 262 83% 58%;           /* 紫 — Admin */
+  --role-manager: 217 91% 60%;         /* 藍 — 主管 */
+  --role-employee: 0 0% 45%;           /* 灰 — 員工 */
+}
