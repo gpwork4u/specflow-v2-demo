@@ -43,8 +43,11 @@ model User {
   manager       User?          @relation("ManagerSubordinates", fields: [managerId], references: [id])
   subordinates  User[]         @relation("ManagerSubordinates")
   managedDepts  Department[]   @relation("DepartmentManager")
-  clockRecords  ClockRecord[]
-  refreshTokens RefreshToken[]
+  clockRecords   ClockRecord[]
+  refreshTokens  RefreshToken[]
+  leaveRequests  LeaveRequest[] @relation("UserLeaves")
+  reviewedLeaves LeaveRequest[] @relation("LeaveReviewer")
+  leaveQuotas    LeaveQuota[]   @relation("UserQuotas")
 
   @@map("users")
 }
@@ -97,4 +100,67 @@ enum ClockStatus {
   EARLY_LEAVE
   ABSENT
   AMENDED
+}
+
+model LeaveRequest {
+  id            String       @id @default(uuid())
+  userId        String       @map("user_id")
+  leaveType     LeaveType    @map("leave_type")
+  startDate     DateTime     @map("start_date") @db.Date
+  endDate       DateTime     @map("end_date") @db.Date
+  startHalf     HalfDay      @default(FULL) @map("start_half")
+  endHalf       HalfDay      @default(FULL) @map("end_half")
+  hours         Decimal      @db.Decimal(5, 1)
+  reason        String       @db.Text
+  status        LeaveStatus  @default(PENDING)
+  reviewerId    String?      @map("reviewer_id")
+  reviewedAt    DateTime?    @map("reviewed_at")
+  reviewComment String?      @map("review_comment") @db.Text
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+
+  user     User  @relation("UserLeaves", fields: [userId], references: [id])
+  reviewer User? @relation("LeaveReviewer", fields: [reviewerId], references: [id])
+
+  @@map("leave_requests")
+}
+
+model LeaveQuota {
+  id         String    @id @default(uuid())
+  userId     String    @map("user_id")
+  leaveType  LeaveType @map("leave_type")
+  year       Int
+  totalHours Decimal   @map("total_hours") @db.Decimal(5, 1)
+  usedHours  Decimal   @default(0) @map("used_hours") @db.Decimal(5, 1)
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime  @updatedAt @map("updated_at")
+
+  user User @relation("UserQuotas", fields: [userId], references: [id])
+
+  @@unique([userId, leaveType, year])
+  @@map("leave_quotas")
+}
+
+enum LeaveType {
+  PERSONAL
+  SICK
+  ANNUAL
+  MARRIAGE
+  BEREAVEMENT
+  MATERNITY
+  PATERNITY
+  OFFICIAL
+}
+
+enum LeaveStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  CANCELLED
+}
+
+enum HalfDay {
+  FULL
+  MORNING
+  AFTERNOON
 }
