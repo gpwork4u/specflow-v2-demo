@@ -48,6 +48,8 @@ model User {
   leaveRequests  LeaveRequest[] @relation("UserLeaves")
   reviewedLeaves LeaveRequest[] @relation("LeaveReviewer")
   leaveQuotas    LeaveQuota[]   @relation("UserQuotas")
+  missedClockRequests  MissedClockRequest[] @relation("UserMissedClocks")
+  reviewedMissedClocks MissedClockRequest[] @relation("MissedClockReviewer")
 
   @@map("users")
 }
@@ -163,4 +165,35 @@ enum HalfDay {
   FULL
   MORNING
   AFTERNOON
+}
+
+model MissedClockRequest {
+  id            String             @id @default(uuid())
+  userId        String             @map("user_id")
+  date          DateTime           @db.Date
+  clockType     ClockType          @map("clock_type")
+  requestedTime DateTime           @map("requested_time")
+  reason        String             @db.Text
+  status        MissedClockStatus  @default(PENDING)
+  reviewerId    String?            @map("reviewer_id")
+  reviewedAt    DateTime?          @map("reviewed_at")
+  reviewComment String?            @map("review_comment") @db.Text
+  createdAt     DateTime           @default(now()) @map("created_at")
+  updatedAt     DateTime           @updatedAt @map("updated_at")
+
+  user     User  @relation("UserMissedClocks", fields: [userId], references: [id])
+  reviewer User? @relation("MissedClockReviewer", fields: [reviewerId], references: [id])
+
+  @@map("missed_clock_requests")
+}
+
+enum ClockType {
+  CLOCK_IN
+  CLOCK_OUT
+}
+
+enum MissedClockStatus {
+  PENDING
+  APPROVED
+  REJECTED
 }
