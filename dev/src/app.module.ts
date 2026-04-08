@@ -6,6 +6,7 @@ import { DepartmentsModule } from './departments/departments.module';
 import { EmployeesModule } from './employees/employees.module';
 import { ClockModule } from './clock/clock.module';
 import { LeaveQuotasModule } from './leave-quotas/leave-quotas.module';
+import { LeavesModule } from './leaves/leaves.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { LeaveQuotasModule } from './leave-quotas/leave-quotas.module';
     EmployeesModule,
     ClockModule,
     LeaveQuotasModule,
+    LeavesModule,
   ],
 })
 export class AppModule {}
