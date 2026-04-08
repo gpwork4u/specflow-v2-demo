@@ -1,5 +1,7 @@
-import { PrismaClient, Role, UserStatus } from '@prisma/client';
+import { PrismaClient, Prisma, Role, UserStatus, LeaveType } from '@prisma/client';
 import * as bcrypt from 'bcrypt';
+
+const Decimal = Prisma.Decimal;
 
 const prisma = new PrismaClient();
 
@@ -100,6 +102,69 @@ async function main() {
     where: { id: engDept.id },
     data: { managerId: manager.id },
   });
+
+  // 建立 2026 年度假別額度
+  const QUOTA_YEAR = 2026;
+  const DEFAULT_HOURS: Record<string, number> = {
+    PERSONAL: 56,
+    SICK: 240,
+    MARRIAGE: 64,
+    BEREAVEMENT: 24,
+    MATERNITY: 448,
+    PATERNITY: 56,
+    OFFICIAL: 9999,
+  };
+
+  function calculateAnnualHours(hireDate: Date, year: number): number {
+    const yearStart = new Date(year, 0, 1);
+    const diffMs = yearStart.getTime() - hireDate.getTime();
+    const diffYears = diffMs / (1000 * 60 * 60 * 24 * 365.25);
+    if (diffYears < 0.5) return 0;
+    if (diffYears < 1) return 24;
+    if (diffYears < 2) return 56;
+    if (diffYears < 3) return 80;
+    if (diffYears < 5) return 112;
+    if (diffYears < 10) return 120;
+    const extraYears = Math.floor(diffYears) - 10;
+    return Math.min(128 + extraYears * 8, 240);
+  }
+
+  const allUsers = [
+    { user: admin, hireDate: new Date('2024-01-01') },
+    { user: manager, hireDate: new Date('2024-01-15') },
+    { user: employee, hireDate: new Date('2024-03-01') },
+  ];
+
+  const leaveTypes = Object.values(LeaveType);
+
+  for (const { user: u, hireDate } of allUsers) {
+    for (const lt of leaveTypes) {
+      let totalHours = DEFAULT_HOURS[lt] ?? 0;
+      if (lt === 'ANNUAL') {
+        totalHours = calculateAnnualHours(hireDate, QUOTA_YEAR);
+      }
+
+      await prisma.leaveQuota.upsert({
+        where: {
+          userId_leaveType_year: {
+            userId: u.id,
+            leaveType: lt,
+            year: QUOTA_YEAR,
+          },
+        },
+        update: {},
+        create: {
+          userId: u.id,
+          leaveType: lt,
+          year: QUOTA_YEAR,
+          totalHours: new Decimal(totalHours),
+          usedHours: new Decimal(0),
+        },
+      });
+    }
+  }
+
+  console.log('Leave quotas created for year', QUOTA_YEAR);
 
   console.log('Seed completed successfully.');
 }
