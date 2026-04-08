@@ -1,0 +1,9 @@
+node_modules/
+dist/
+screenshots/**/*.png
+reports/
+test-results/
+!screenshots/.gitkeep
+!screenshots/F-000/.gitkeep
+!screenshots/F-001/.gitkeep
+!screenshots/F-008/.gitkeep
