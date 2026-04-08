@@ -12,6 +12,7 @@ import { ReportsModule } from './reports/reports.module';
 import { CalendarModule } from './calendar/calendar.module';
 import { MissedClocksModule } from './missed-clocks/missed-clocks.module';
 import { OvertimeModule } from './overtime/overtime.module';
+import { NotificationsModule } from './notifications/notifications.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { OvertimeModule } from './overtime/overtime.module';
     CalendarModule,
     MissedClocksModule,
     OvertimeModule,
+    NotificationsModule,
   ],
 })
 export class AppModule {}
