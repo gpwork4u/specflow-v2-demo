@@ -8,6 +8,7 @@ import { ClockModule } from './clock/clock.module';
 import { LeaveQuotasModule } from './leave-quotas/leave-quotas.module';
 import { LeavesModule } from './leaves/leaves.module';
 import { LeaveApprovalModule } from './leave-approval/leave-approval.module';
+import { ReportsModule } from './reports/reports.module';
 
 @Module({
   imports: [
@@ -23,6 +24,7 @@ import { LeaveApprovalModule } from './leave-approval/leave-approval.module';
     LeaveQuotasModule,
     LeavesModule,
     LeaveApprovalModule,
+    ReportsModule,
   ],
 })
 export class AppModule {}
