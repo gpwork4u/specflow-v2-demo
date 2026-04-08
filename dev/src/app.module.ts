@@ -7,6 +7,7 @@ import { EmployeesModule } from './employees/employees.module';
 import { ClockModule } from './clock/clock.module';
 import { LeaveQuotasModule } from './leave-quotas/leave-quotas.module';
 import { LeavesModule } from './leaves/leaves.module';
+import { LeaveApprovalModule } from './leave-approval/leave-approval.module';
 
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import { LeavesModule } from './leaves/leaves.module';
     ClockModule,
     LeaveQuotasModule,
     LeavesModule,
+    LeaveApprovalModule,
   ],
 })
 export class AppModule {}
