@@ -108,6 +108,16 @@ export const API = {
     PENDING: '/api/v1/leaves/pending',
     // + /:id, /:id/cancel, /:id/approve, /:id/reject
   },
+  CALENDAR: {
+    PERSONAL: '/api/v1/calendar/personal',
+    TEAM: '/api/v1/calendar/team',
+  },
+  REPORTS: {
+    PERSONAL: '/api/v1/reports/personal',
+    TEAM: '/api/v1/reports/team',
+    COMPANY: '/api/v1/reports/company',
+    EXPORT: '/api/v1/reports/export',
+  },
 } as const;
 
 // ===== 密碼測試 =====
