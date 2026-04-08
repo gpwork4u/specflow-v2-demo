@@ -76,6 +76,17 @@ export async function loginAsAdmin(page: Page): Promise<void> {
 }
 
 /**
+ * 以主管身份登入
+ */
+export async function loginAsManager(page: Page): Promise<void> {
+  await loginViaUI(
+    page,
+    LOGIN_CREDENTIALS.manager.email,
+    LOGIN_CREDENTIALS.manager.password,
+  );
+}
+
+/**
  * 驗證已成功登入（不在登入頁）
  */
 export async function expectLoggedIn(page: Page): Promise<void> {

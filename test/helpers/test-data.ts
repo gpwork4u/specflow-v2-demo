@@ -98,6 +98,16 @@ export const API = {
     TODAY: '/api/v1/clock/today',
     RECORDS: '/api/v1/clock/records',
   },
+  LEAVE_QUOTAS: {
+    ME: '/api/v1/leave-quotas/me',
+    EMPLOYEES: '/api/v1/leave-quotas/employees', // + /:userId
+    BATCH: '/api/v1/leave-quotas/batch',
+  },
+  LEAVES: {
+    BASE: '/api/v1/leaves',
+    PENDING: '/api/v1/leaves/pending',
+    // + /:id, /:id/cancel, /:id/approve, /:id/reject
+  },
 } as const;
 
 // ===== 密碼測試 =====
@@ -107,6 +117,60 @@ export const PASSWORDS = {
   WRONG: 'WrongPassword99!',
   TOO_SHORT: 'short',
 };
+
+// ===== 請假相關 =====
+
+/** 假別類型 */
+export const LEAVE_TYPES = {
+  ANNUAL: 'annual',
+  PERSONAL: 'personal',
+  SICK: 'sick',
+  MARRIAGE: 'marriage',
+  BEREAVEMENT: 'bereavement',
+  MATERNITY: 'maternity',
+  PATERNITY: 'paternity',
+  OFFICIAL: 'official',
+} as const;
+
+/** 半天選項 */
+export const HALF_DAY = {
+  FULL: 'full',
+  MORNING: 'morning',
+  AFTERNOON: 'afternoon',
+} as const;
+
+/** 請假狀態 */
+export const LEAVE_STATUS = {
+  PENDING: 'pending',
+  APPROVED: 'approved',
+  REJECTED: 'rejected',
+  CANCELLED: 'cancelled',
+} as const;
+
+/**
+ * 產生未來日期字串（ISO 8601 date）
+ * @param daysFromNow 從今天起算的天數
+ */
+export function futureDate(daysFromNow: number): string {
+  const d = new Date();
+  d.setDate(d.getDate() + daysFromNow);
+  return d.toISOString().split('T')[0];
+}
+
+/**
+ * 產生過去日期字串
+ * @param daysAgo 幾天前
+ */
+export function pastDate(daysAgo: number): string {
+  const d = new Date();
+  d.setDate(d.getDate() - daysAgo);
+  return d.toISOString().split('T')[0];
+}
+
+/** 今天的日期字串 */
+export function todayDate(): string {
+  return new Date().toISOString().split('T')[0];
+}
 
 // ===== 分頁預設值 =====
 
