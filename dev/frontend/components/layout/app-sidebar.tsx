@@ -45,8 +45,8 @@ const mainNavItems: NavItem[] = [
   { title: "Dashboard", icon: LayoutDashboard, href: "/", roles: ["employee", "manager", "admin"] },
   { title: "打卡", icon: Clock, href: "/clock", roles: ["employee", "manager", "admin"] },
   { title: "打卡紀錄", icon: CalendarDays, href: "/clock/records", roles: ["employee", "manager", "admin"] },
-  { title: "請假申請", icon: FileText, href: "/leave/request", roles: ["employee", "manager", "admin"] },
-  { title: "我的請假", icon: CalendarCheck, href: "/leave/my", roles: ["employee", "manager", "admin"] },
+  { title: "請假申請", icon: FileText, href: "/leaves/request", roles: ["employee", "manager", "admin"] },
+  { title: "我的請假", icon: CalendarCheck, href: "/leaves", roles: ["employee", "manager", "admin"] },
   { title: "個人行事曆", icon: Calendar, href: "/calendar", roles: ["employee", "manager", "admin"] },
   { title: "個人報表", icon: BarChart3, href: "/reports/personal", roles: ["employee", "manager", "admin"] },
   { title: "加班申請", icon: Timer, href: "/overtime", roles: ["employee", "manager", "admin"] },
@@ -55,7 +55,7 @@ const mainNavItems: NavItem[] = [
 ];
 
 const managerNavItems: NavItem[] = [
-  { title: "待審核 - 請假", icon: ClipboardList, href: "/approval/leave", roles: ["manager", "admin"] },
+  { title: "待審核 - 請假", icon: ClipboardList, href: "/leaves/pending", roles: ["manager", "admin"] },
   { title: "待審核 - 加班", icon: ClipboardList, href: "/approval/overtime", roles: ["manager", "admin"] },
   { title: "待審核 - 補打卡", icon: ClipboardList, href: "/approval/missed-clock", roles: ["manager", "admin"] },
   { title: "團隊行事曆", icon: Calendar, href: "/calendar/team", roles: ["manager", "admin"] },
@@ -65,7 +65,7 @@ const managerNavItems: NavItem[] = [
 const adminNavItems: NavItem[] = [
   { title: "員工管理", icon: Users, href: "/employees", roles: ["admin"] },
   { title: "部門管理", icon: Building2, href: "/departments", roles: ["admin"] },
-  { title: "假別額度", icon: FileText, href: "/quota", roles: ["admin"] },
+  { title: "假別額度", icon: FileText, href: "/leaves/quotas", roles: ["admin"] },
   { title: "全公司報表", icon: BarChart3, href: "/reports/company", roles: ["admin"] },
 ];
 
