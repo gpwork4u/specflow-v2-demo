@@ -42,6 +42,30 @@
     --sidebar-ring: 221 83% 53%;
     --radius: 0.5rem;
 
+    /* Calendar colors */
+    --cal-present: 142 71% 45%;
+    --cal-present-bg: 142 71% 95%;
+    --cal-late: 38 92% 50%;
+    --cal-late-bg: 38 92% 95%;
+    --cal-early-leave: 32 95% 44%;
+    --cal-early-leave-bg: 32 95% 95%;
+    --cal-leave: 217 91% 60%;
+    --cal-leave-bg: 217 91% 95%;
+    --cal-absent: 0 84% 60%;
+    --cal-absent-bg: 0 84% 95%;
+    --cal-holiday-bg: 0 0% 97%;
+    --cal-holiday-text: 0 84% 60%;
+    --cal-overtime: 262 83% 58%;
+    --cal-overtime-bg: 262 83% 95%;
+
+    /* Chart colors */
+    --chart-present: 142 71% 45%;
+    --chart-late: 38 92% 50%;
+    --chart-early-leave: 32 95% 44%;
+    --chart-leave: 217 91% 60%;
+    --chart-absent: 0 84% 60%;
+    --chart-overtime: 262 83% 58%;
+
     /* Status colors */
     --status-normal: 142 71% 45%;
     --status-late: 38 92% 50%;
@@ -85,6 +109,29 @@
     --chart-3: 48 96% 89%;
     --chart-4: 0 93% 94%;
     --chart-5: 262 83% 58%;
+    /* Calendar colors (dark) */
+    --cal-present: 142 76% 36%;
+    --cal-present-bg: 142 76% 10%;
+    --cal-late: 32 95% 44%;
+    --cal-late-bg: 32 95% 10%;
+    --cal-early-leave: 32 95% 38%;
+    --cal-early-leave-bg: 32 95% 10%;
+    --cal-leave: 213 94% 68%;
+    --cal-leave-bg: 213 94% 10%;
+    --cal-absent: 0 63% 31%;
+    --cal-absent-bg: 0 63% 10%;
+    --cal-holiday-bg: 0 0% 8%;
+    --cal-holiday-text: 0 93% 94%;
+    --cal-overtime: 262 83% 58%;
+    --cal-overtime-bg: 262 83% 10%;
+
+    --chart-present: 142 76% 36%;
+    --chart-late: 32 95% 44%;
+    --chart-early-leave: 32 95% 38%;
+    --chart-leave: 213 94% 68%;
+    --chart-absent: 0 63% 31%;
+    --chart-overtime: 262 83% 58%;
+
     --sidebar-background: 0 0% 7%;
     --sidebar-foreground: 0 0% 83%;
     --sidebar-primary: 217 91% 60%;
