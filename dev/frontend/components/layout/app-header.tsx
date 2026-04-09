@@ -21,6 +21,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { KeyRound, LogOut } from "lucide-react";
+import { HeaderNotification } from "@/components/header-notification";
 
 export interface BreadcrumbItem {
   label: string;
@@ -75,6 +76,7 @@ export function AppHeader({
       </Breadcrumb>
 
       <div className="ml-auto flex items-center gap-2">
+        <HeaderNotification />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="flex items-center gap-2 rounded-lg px-2 py-1.5 hover:bg-accent">
